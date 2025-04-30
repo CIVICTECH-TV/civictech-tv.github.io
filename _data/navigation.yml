@@ -1,0 +1,9 @@
+nav:
+  - title: "サービス"
+    section: services
+  - title: "私たちについて"
+    section: about
+  - title: "メンバー"
+    section: team
+  - title: "お問い合わせ"
+    section: contact 

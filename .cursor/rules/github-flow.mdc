@@ -83,6 +83,10 @@ git push origin --delete feature/新機能名
 - 大きな機能は小さなタスクに分割し、複数のPRに分けることを検討しましょう
 - CI/CDテストがある場合は、全てのテストをパスしてからマージしましょう
 - **GitHub Actions を利用する場合:**
-    - プルリクエスト時にビルドやテストを実行するには、ワークフローのトリガーに `on: pull_request:` を追加しましょう。
-    - デプロイなど、リポジトリへの書き込みが必要なステップには、ワークフローに `permissions: contents: write` 権限を付与しましょう。
-    - デプロイステップが `main` (または `master`) ブランチへのマージ時のみ実行されるようにするには、該当ステップに `if: github.event_name == 'push' && github.ref == 'refs/heads/main'` のような条件を追加しましょう。
+    - **トリガー:** プルリクエスト時にビルドやテストを実行するには、ワークフローのトリガーに `on: pull_request:` を追加しましょう。
+    - **権限:**
+        - リポジトリのコンテンツ読み取りには `permissions: contents: read` が基本です。
+        - GitHub Pagesへのデプロイに公式の `actions/deploy-pages` を使う場合は、追加で `permissions: pages: write` と `id-token: write` が必要です。（古い方法である `peaceiris/actions-gh-pages` などでは `contents: write` が必要でした。）
+    - **デプロイ制御:**
+        - `main` (または `master`) ブランチへのプッシュ時のみデプロイを実行するには、`build` ジョブと `deploy` ジョブを分離し、`deploy` **ジョブ**に `if: github.ref == 'refs/heads/main' && github.event_name == 'push'` のような条件を追加しましょう。
+        - **注意:** GitHubリポジトリ設定の `Environments` で保護ルール (Protection rules) が設定されている場合があります。これにより、特定のブランチ以外からのデプロイが拒否されることがあるため、上記 `if` 条件による `deploy` ジョブの実行制御が重要になります。

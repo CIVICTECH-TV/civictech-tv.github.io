@@ -1,44 +1,62 @@
 name: Build and deploy Jekyll site to GitHub Pages
 
 permissions:
-  contents: write
+  contents: read # リポジトリのコンテンツを読み取るために必要
+  pages: write   # GitHub Pagesにデプロイするために必要
+  id-token: write # OIDCトークンを要求するために必要
 
 on:
   push:
     branches:
-      - main  # mainブランチにプッシュされたときに実行
+      - main # mainブランチにプッシュされたときに実行
     paths-ignore:
       - '.cursor/**'
       - 'README.md'
   pull_request:
     branches:
-      - main  # mainブランチへのプルリクエストで実行
+      - main # mainブランチへのプルリクエストで実行
     paths-ignore:
       - '.cursor/**'
       - 'README.md'
 
+# pagesビルド成果物をアップロードするためだけに GITHUB_TOKEN のワークフロースコープを設定します
+# 不要な場合は、以下の行を削除してください
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  github-pages:
+  # ビルドジョブ
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      # Rubyのセットアップ
-      - uses: ruby/setup-ruby@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
-          bundler-cache: true
-      
-      # Jekyll環境のセットアップとビルド
-      - name: Build Jekyll
-        run: |
-          bundle install
-          bundle exec jekyll build
-      
-      # GitHub Pagesへのデプロイ
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Build with Jekyll
+        # Outputs to the './_site' directory by default
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+      - name: Upload artifact
+        # Automatically uploads an artifact from the './_site' directory by default
+        uses: actions/upload-pages-artifact@v3
+
+  # デプロイジョブ
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site 
+        id: deployment
+        uses: actions/deploy-pages@v4 

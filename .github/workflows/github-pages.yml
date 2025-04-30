@@ -7,9 +7,15 @@ on:
   push:
     branches:
       - main  # mainブランチにプッシュされたときに実行
+    paths-ignore:
+      - '.cursor/**'
+      - 'README.md'
   pull_request:
     branches:
       - main  # mainブランチへのプルリクエストで実行
+    paths-ignore:
+      - '.cursor/**'
+      - 'README.md'
 
 jobs:
   github-pages:

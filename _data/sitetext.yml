@@ -23,10 +23,10 @@ services:
         desc: "各地のシビックテックコミュニティをつなぐプラットフォーム"
         icon: fas fa-users
 
-about:
+timeline:
     title: "私たちについて"
     text: "CIVICTECH.TVの歩み"
-    section: about
+    section: timeline
     list:
       - title: "始まり"
         desc: "シビックテックへの関心の高まりから、情報共有プラットフォームの必要性を認識"
@@ -88,4 +88,4 @@ footer:
       - url: https://github.com
         icon: "fab fa-github"
       - url: https://www.youtube.com/
-        icon: "fab fa-youtube" 
+        icon: "fab fa-youtube"  

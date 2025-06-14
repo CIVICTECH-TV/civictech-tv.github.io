@@ -4,7 +4,7 @@
 
 header:
     title: CIVICTECH.TV
-    text: テクノロジーで社会課題の解決を目指す
+    text: ネガティブをポジティブで上書きする
     button: 詳細を見る
     buttonlink: "#services"
 
@@ -13,31 +13,31 @@ services:
     text: "CIVICTECH.TVが提供するサービス"
     section: services
     list:
-      - title: "シビックテック紹介"
-        desc: "テクノロジーを活用した社会課題解決について情報発信"
+      - title: "映像配信・放送"
+        desc: "インターネット等を利用した映像の配信・放送サービス"
         icon: fas fa-film
-      - title: "イベント情報"
-        desc: "日本各地で開催されるシビックテック関連イベントの案内"
-        icon: fas fa-calendar
-      - title: "コミュニティ連携"
-        desc: "各地のシビックテックコミュニティをつなぐプラットフォーム"
-        icon: fas fa-users
+      - title: "企画・コンサルティング"
+        desc: "映像配信や放送に関する企画・コンサルティングサービス"
+        icon: fas fa-lightbulb
+      - title: "プロインタビュー"
+        desc: "動画製作企画・配信、プロインタビュアーによる取材サービス"
+        icon: fas fa-microphone
 
 timeline:
     title: "私たちについて"
     text: "CIVICTECH.TVの歩み"
     section: timeline
     list:
-      - title: "始まり"
-        desc: "シビックテックへの関心の高まりから、情報共有プラットフォームの必要性を認識"
+      - title: "2020年"
+        desc: "CIVICTECH.TV合同会社を設立。ネガティブをポジティブで上書きするという理念のもと活動開始"
         image: assets/img/timeline/1.jpg
         alt: 
-      - title: "活動開始"
-        desc: "各地のシビックテックコミュニティとの連携を開始"
+      - title: "活動拡大"
+        desc: "プロインタビュアーとして動画製作企画・配信を本格化。オンラインイベント運営ノウハウの提供も開始"
         image: assets/img/timeline/2.jpg
         alt: 
       - title: "現在"
-        desc: "日本全国のシビックテック活動の中心的な情報メディアへ"
+        desc: "インフォメーションではなくエモーションを伝える映像配信サービスとして発展"
         image: assets/img/timeline/3.jpg
         alt: image alt text
     end: "CIVICTECH.TV<br>の歴史はこれからも続く！"
@@ -45,19 +45,19 @@ timeline:
 team:
     title: "メンバー"
     text: "運営チームの紹介"
-    subtext: シビックテックに関わる多様なバックグラウンドを持ったメンバーで構成されています
+    subtext: 国や行政、企業のDXの導入・推進のため、コンサルティング・Webシステム開発などを手掛けるメンバーで構成されています
     section: team
     people:
-      - name: "シビックテック 太郎"
-        role: "代表"
+      - name: "太田垣恭子"
+        role: "代表社員"
         image: assets/img/team/1.jpg
         social:
           - url: https://twitter.com
             icon: fab fa-twitter
           - url: https://github.com
             icon: fab fa-github
-      - name: "テック 花子"
-        role: "編集長"
+      - name: "酒井一樹"
+        role: "代表社員"
         image: assets/img/team/2.jpg
         social:
           - url: https://twitter.com
@@ -85,7 +85,7 @@ footer:
     social:
       - url: https://twitter.com
         icon: "fab fa-twitter"
-      - url: https://github.com
+      - url: https://github.com/CIVICTECH-TV
         icon: "fab fa-github"
-      - url: https://www.youtube.com/
-        icon: "fab fa-youtube"    
+      - url: https://www.youtube.com/channel/UCkTAnK5-f7i6x8OqiWcC0lw
+        icon: "fab fa-youtube"                            

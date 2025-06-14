@@ -21,8 +21,8 @@
 title: CIVICTECH.TV
 email: info@civictech.tv
 description: >-
-  CIVICTECH.TV - シビックテックに関する動画、インタビュー、イベント情報を発信するウェブサイトです。
-  技術を活用して社会課題の解決に取り組む実践者たちの声を届けます。
+  CIVICTECH.TV - インターネット等を利用した映像の配信・放送ならびに、それらの企画・コンサルティングを行っています。
+  ネガティブをポジティブで上書きし、インフォメーションではなくエモーションを伝えることを大切にしています。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://civictech-tv.github.io" # the base hostname & protocol for your site
 github_username:  CIVICTECH-TV

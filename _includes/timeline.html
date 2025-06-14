@@ -1,0 +1,48 @@
+<!-- Timeline Section -->
+<section class="page-section" id="{{ site.data.sitetext.timeline.section | default: "timeline" }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">{{ site.data.sitetext.timeline.title | markdownify | strip_html | strip_newlines | escape_once }}</h2>
+        <h3 class="section-subheading text-muted">{{ site.data.sitetext.timeline.text | markdownify | strip_html | strip_newlines | escape_once }}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="timeline">
+          {% for event in site.data.sitetext.timeline.list %}
+            {% if forloop.index == 1 %}
+              {% assign alignment = "timeline-left" %}
+            {% else %}
+              {% assign alignment = "timeline-right" %}
+            {% endif %}
+            {% if forloop.index == 2 %}
+              {% assign alignment = "timeline-left" %}
+            {% endif %}
+            {% if forloop.index == 3 %}
+              {% assign alignment = "timeline-right" %}
+            {% endif %}
+          <li class="{{ alignment }}">
+            <div class="timeline-image">
+              <img class="rounded-circle img-fluid" src="{{ event.image }}" alt="{{ event.alt | default: "" }}">
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>{{ event.title }}</h4>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">{{ event.desc | markdownify }}</p>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h4>{{ site.data.sitetext.timeline.end | markdownify }}</h4>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
